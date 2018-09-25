@@ -1,25 +1,21 @@
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-//import AddNote from './src/components/AddNote.js';
-//import NoteText from './src/components/NoteText';
-import RootStack from './src/RootStack.js';
-import { createStore } from 'redux'
-import rootReducer from './src/reducers'
+import { createStore } from 'redux';
 import { Provider as StoreProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
-import { store, persistor } from './src/config';
+
+import AppRouter from '@routers/AppRouter.js';
+import rootReducer from '@reducers';
+import { store, persistor } from '@config';
 
 
 export default class App extends Component{
-  render(props) {
+  render() {
     return (
       <StoreProvider store={store} style={styles.container}>
         <PersistGate loading={null} persistor={persistor}>
-        {/* <Provider store = {store}> */}
-        <RootStack {...props}/>
-        {/* </Provider> */}
-      </PersistGate>
+          <AppRouter />
+        </PersistGate>
      </StoreProvider>
     );
   }

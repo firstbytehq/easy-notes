@@ -3,7 +3,7 @@ import {FlatList,StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { Divider, TextInput } from 'react-native-paper';
 import {connect} from 'react-redux'
 
- class NoteList extends Component {
+ class HomeScreen extends Component {
   static navigationOptions = { header: null }
 
   renderNotes = ({item})=> {
@@ -12,7 +12,7 @@ import {connect} from 'react-redux'
     return (
       <View style = {{backgroundColor:'white',flex:1}}>
 
-        <TouchableOpacity onPress={ () => this.props.navigation.navigate('Edit',{id:item.id,title:item.title,content:item.content})}>
+        <TouchableOpacity onPress={ () => this.props.navigation.navigate('NoteScreen',{id:item.id,title:item.title,content:item.content})}>
         <Text style = { styles.title }>{item.title}</Text>
         <Text style = { styles.content }>{item.content}</Text>
       </TouchableOpacity>
@@ -31,7 +31,7 @@ import {connect} from 'react-redux'
           renderItem = {this.renderNotes}
         />
         <Divider style = {{marginTop:230}}/>
-        <TouchableOpacity onPress = {() => {this.props.navigation.navigate('Edit')}}>
+        <TouchableOpacity onPress = {() => {this.props.navigation.navigate('NoteScreen')}}>
         <Text style = { styles.addNote }>Add Notes</Text>
       </TouchableOpacity>
       </View>
@@ -76,4 +76,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps)(NoteList)
+export default connect(mapStateToProps)(HomeScreen)
