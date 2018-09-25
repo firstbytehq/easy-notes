@@ -1,3 +1,5 @@
+import shortid from 'shortid';
+
 import { ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from '@constants/actionTypes';
 
 const initialState = { notes: [] }
@@ -8,7 +10,8 @@ export default (state = initialState, action) => {
   switch(type) {
     case ADD_NOTE:
       const { title, content } = payload;
-      const notes = [...state.notes, { title, content }]
+      const key = shortid.generate();
+      const notes = [...state.notes, { title, content, key }]
       return {...state, notes};
 
     case EDIT_NOTE:
