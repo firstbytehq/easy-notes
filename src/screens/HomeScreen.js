@@ -22,12 +22,11 @@ import {connect} from 'react-redux'
     );
   }
   render(){
-    console.log('note',this.props.Notes);
     return(
       <View style = {styles.container}>
         <Text style = { styles.notes }>NOTES</Text>
         <FlatList
-          data = {this.props.Notes}
+          data = {this.props.notes}
           renderItem = {this.renderNotes}
         />
         <Divider style = {{marginTop:230}}/>
@@ -68,10 +67,10 @@ const styles = StyleSheet.create({
   },
 });
 function mapStateToProps(state) {
-  const {content,title,Notes}=state;
+  const {content,title,notes}=state;
   console.log('title',title);
   console.log('content',content);
-  return {content,title,Notes }
+  return {content,title,notes }
 }
 
 

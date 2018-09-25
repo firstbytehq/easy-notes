@@ -48,7 +48,7 @@ class EditNote extends Component {
           this.props.navigation.navigate('HomeScreen')}} >
           <Text>Edit</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{this.props.addNote(title,content)
+        <TouchableOpacity onPress={()=>{this.props.addNote({title,content})
           this.props.navigation.navigate('HomeScreen')}} >
           <Text>add</Text>
         </TouchableOpacity>

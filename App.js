@@ -3,8 +3,7 @@ import { Provider as StoreProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
 
 import AppRouter from '@routers/AppRouter.js';
-import rootReducer from '@reducers';
-import { store, persistor } from '@config';
+import { store, persistor } from '@config/store';
 
 export default class App extends Component{
   render() {

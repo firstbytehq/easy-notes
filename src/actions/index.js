@@ -1,1 +1,1 @@
-export * from './noteAction.js'
+export * from './actions';

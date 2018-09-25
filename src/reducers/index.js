@@ -1,3 +1,2 @@
-import NoteReducer from './NoteReducer';
-
- export default NoteReducer
+import reducer from './reducer';
+export default reducer;
