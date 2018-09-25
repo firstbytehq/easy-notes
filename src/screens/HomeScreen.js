@@ -3,16 +3,21 @@ import {FlatList,StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { Divider, TextInput } from 'react-native-paper';
 import {connect} from 'react-redux'
 
+import { setCurrentNote } from '@actions';
+
  class HomeScreen extends Component {
   static navigationOptions = { header: null }
 
   renderNotes = ({item})=> {
-    console.log('rendernifg',item.title);
-    console.log('notelist id',item.id);
     return (
       <View style = {{backgroundColor:'white',flex:1}}>
 
-        <TouchableOpacity onPress={ () => this.props.navigation.navigate('NoteScreen',{id:item.id,title:item.title,content:item.content})}>
+        <TouchableOpacity
+          onPress = {() => {
+            this.props.setCurrentNote(item);
+            this.props.navigation.navigate('NoteScreen',{key:item.key,title:item.title,content:item.content});
+          }}
+        >
         <Text style = { styles.title }>{item.title}</Text>
         <Text style = { styles.content }>{item.content}</Text>
       </TouchableOpacity>
@@ -68,11 +73,11 @@ const styles = StyleSheet.create({
 });
 function mapStateToProps(state) {
   const {content,title,notes}=state;
-  console.log('title',title);
-  console.log('content',content);
   return {content,title,notes }
 }
 
+const mapDispatchToProps = {
+  setCurrentNote
+}
 
-
-export default connect(mapStateToProps)(HomeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

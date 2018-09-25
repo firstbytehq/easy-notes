@@ -1,7 +1,8 @@
 import {
  ADD_NOTE,
  EDIT_NOTE,
- DELETE_NOTE
+ DELETE_NOTE,
+ SET_CURRENT_NOTE
 } from '@constants/actionTypes'
 
 export const addNote = ({title, content})=> {
@@ -18,9 +19,16 @@ export const editNote = (title,content)=> {
   }
 }
 
-export const deleteNote = (id)=> {
+export const deleteNote = key => {
   return {
     type: DELETE_NOTE,
-    payload: {id}
+    payload: key
+  }
+}
+
+export const setCurrentNote = note => {
+  return {
+    type: SET_CURRENT_NOTE,
+    payload: note
   }
 }

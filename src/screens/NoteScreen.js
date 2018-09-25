@@ -1,27 +1,23 @@
 import React, {Component} from 'react';
 import {TouchableOpacity, StyleSheet, Text, View, TextInput} from 'react-native';
-import { Button } from 'react-native-paper';
 import {connect} from 'react-redux';
-import {editNote,addNote} from '../actions';
-import { deleteNote } from '../actions'
 
-class EditNote extends Component {
+import {editNote,addNote,deleteNote} from '../actions';
+import DeleteButton from '@components/DeleteButton';
+
+class NoteScreen extends Component {
   static navigationOptions = {
-    headerRight: <Button icon = 'delete' onPress={() => {this.onDelete(id)}} />
+    headerRight: <DeleteButton />
   };
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      id:this.props.navigation.getParam('id'),
+      key:this.props.navigation.getParam('key'),
       title: this.props.navigation.getParam('title'),
       content: this.props.navigation.getParam('content')
     }
-  }
-
-  onDelete = id =>{
-    this.props.deleteNote(id)
   }
 
   render() {
@@ -70,10 +66,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   const { content,title,id}=state;
-  console.log('edtitle',title);
-  console.log('edcontent',content);
-
   return { content,title,id }
 }
 
-export default connect(mapStateToProps,{ editNote,deleteNote,addNote })(EditNote)
+export default connect(mapStateToProps,{ editNote,deleteNote,addNote })(NoteScreen)
