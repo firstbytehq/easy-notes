@@ -7,7 +7,13 @@ export default props => {
   return(
     <TouchableOpacity onPress = { onPress }>
       <Text>{ title }</Text>
-      <Text>{ content }</Text>
+      <Text>
+        {
+          content.length < 50 ?
+          content :
+          content.slice(0, 50) + '...'
+        }
+      </Text>
     </TouchableOpacity>
   )
 }
