@@ -22,8 +22,15 @@ class NoteScreen extends Component {
   }
 
   onBackButtonPress = () => {
-    const { title, content } = this.state;
-    this.props.addNote({ title, content });
+    const { title, content, key } = this.state;
+    if (key) {
+      // We are editing an existing note
+      this.props.editNote({ title, content, key });
+    }
+    else {
+      // We are adding a new note.
+      this.props.addNote({ title, content });
+    }
     this.props.navigation.goBack();
   }
 

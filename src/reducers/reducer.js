@@ -10,25 +10,29 @@ import {
 const initialState = { notes: [], currentNote: {} }
 
 export default (state = initialState, action) => {
+  console.log(action);
   const { type, payload } = action;
 
-  let notes;
-
   switch(type) {
-    case ADD_NOTE:
+    case ADD_NOTE: {
       const { title, content } = payload;
       const key = shortid.generate();
-      notes = [...state.notes, { title, content, key }]
+      const notes = [...state.notes, { title, content, key }]
       return {...state, notes};
+    }
 
-    case EDIT_NOTE:
-      let editedNotes= [];
-      editedNotes.push(action.payload)
-      return {...state,Notes:editedNotes}
+    case EDIT_NOTE: {
+      const { title, content, key } = payload;
+      let notes;
+      notes = state.notes.filter(note => note.key !== key);
+      notes = [...notes, { title, content, key }];
+      return {...state, notes};
+    }
 
-    case DELETE_NOTE:
-      notes = state.notes.filter(note => note.key !== payload);
+    case DELETE_NOTE: {
+      const notes = state.notes.filter(note => note.key !== payload);
       return { ...state, notes }
+    }
 
     case SET_CURRENT_NOTE:
       return { ...state, currentNote: payload }

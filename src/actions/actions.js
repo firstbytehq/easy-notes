@@ -12,10 +12,10 @@ export const addNote = ({title, content})=> {
   }
 }
 
-export const editNote = (title,content)=> {
+export const editNote = note => {
   return {
-    type: EDIT_NOTES,
-    payload: {title:title,content:content}
+    type: EDIT_NOTE,
+    payload: note
   }
 }
 
