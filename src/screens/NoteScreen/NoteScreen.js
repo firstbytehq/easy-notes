@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {TouchableOpacity, StyleSheet, Text, View, TextInput} from 'react-native';
 import {connect} from 'react-redux';
 
-import {editNote,addNote,deleteNote} from '@actions';
+import {addNote, editNote, deleteNote} from '@actions';
 import DeleteButton from '@components/DeleteButton';
 import NoteScreenHeader from './NoteScreenHeader';
 
@@ -55,7 +55,6 @@ class NoteScreen extends Component {
           value={this.state.title}
         >
         </TextInput>
-
         <TextInput
           style = { styles.content }
           multiline = {true}
@@ -64,13 +63,6 @@ class NoteScreen extends Component {
           placeholder= 'content'
         >
         </TextInput>
-        <TouchableOpacity onPress={()=>{this.props.editNote(title,content)
-          this.props.navigation.navigate('HomeScreen')}} >
-          <Text>Edit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{}} >
-          <Text>add</Text>
-        </TouchableOpacity>
       </View>
     );
   }
