@@ -4,33 +4,28 @@ import { Divider, TextInput } from 'react-native-paper';
 import {connect} from 'react-redux'
 
 import { setCurrentNote } from '@actions';
+import NotePreview from './NotePreview';
 
- class HomeScreen extends Component {
-  renderNotes = ({item})=> {
+class HomeScreen extends Component {
+  renderNote = ({item})=> {
     return (
-      <View style = {{backgroundColor:'white',flex:1}}>
-
-        <TouchableOpacity
-          onPress = {() => {
-            this.props.setCurrentNote(item);
-            this.props.navigation.navigate('NoteScreen',{key:item.key,title:item.title,content:item.content});
-          }}
-        >
-        <Text style = { styles.title }>{item.title}</Text>
-        <Text style = { styles.content }>{item.content}</Text>
-      </TouchableOpacity>
-        <Divider style = {{marginTop:5}}/>
-
-      </View>
+      <NotePreview
+        note = { item }
+        onPress = {() => {
+          this.props.navigation.navigate(
+            'NoteScreen',
+            {key:item.key,title:item.title,content:item.content});
+        }}
+      />
     );
   }
   render(){
     return(
       <View style = {styles.container}>
-        <Text style = { styles.notes }>NOTES</Text>
+        <Text style = { styles.notes }>Notes</Text>
         <FlatList
           data = {this.props.notes}
-          renderItem = {this.renderNotes}
+          renderItem = {this.renderNote}
         />
         <Divider style = {{marginTop:230}}/>
         <TouchableOpacity onPress = {() => {this.props.navigation.navigate('NoteScreen')}}>
