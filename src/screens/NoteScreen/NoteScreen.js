@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import {editNote,addNote,deleteNote} from '@actions';
 import DeleteButton from '@components/DeleteButton';
+import NoteScreenHeader from './NoteScreenHeader';
 
 class NoteScreen extends Component {
   static navigationOptions = {
@@ -24,6 +25,7 @@ class NoteScreen extends Component {
     const {title,content,id} = this.state;
     return (
       <View style = {{flex:1,backgroundColor:'white'}} >
+        <NoteScreenHeader />
         <TextInput
           style = { styles.title }
           onChangeText={(text) => this.setState({title:text})}

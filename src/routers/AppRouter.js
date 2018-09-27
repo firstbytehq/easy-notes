@@ -10,6 +10,7 @@ const AppRouter = createStackNavigator(
   },
   {
     initialRouteName: 'HomeScreen',
+    headerMode: 'none'
   }
 );
 

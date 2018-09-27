@@ -6,8 +6,6 @@ import {connect} from 'react-redux'
 import { setCurrentNote } from '@actions';
 
  class HomeScreen extends Component {
-  static navigationOptions = { header: null }
-
   renderNotes = ({item})=> {
     return (
       <View style = {{backgroundColor:'white',flex:1}}>
