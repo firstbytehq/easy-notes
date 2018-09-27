@@ -27,12 +27,19 @@ class NoteScreen extends Component {
     this.props.navigation.goBack();
   }
 
+  onDeleteButtonPress = () => {
+    const { key } = this.state;
+    this.props.deleteNote(key);
+    this.props.navigation.goBack();
+  }
+
   render() {
     const {title,content,id} = this.state;
     return (
       <View style = {{flex:1,backgroundColor:'white'}} >
         <NoteScreenHeader
           onBackButtonPress = { this.onBackButtonPress }
+          onDeleteButtonPress = { this.onDeleteButtonPress }
         />
         <TextInput
           style = { styles.title }
