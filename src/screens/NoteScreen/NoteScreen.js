@@ -21,11 +21,19 @@ class NoteScreen extends Component {
     }
   }
 
+  onBackButtonPress = () => {
+    const { title, content } = this.state;
+    this.props.addNote({ title, content });
+    this.props.navigation.goBack();
+  }
+
   render() {
     const {title,content,id} = this.state;
     return (
       <View style = {{flex:1,backgroundColor:'white'}} >
-        <NoteScreenHeader />
+        <NoteScreenHeader
+          onBackButtonPress = { this.onBackButtonPress }
+        />
         <TextInput
           style = { styles.title }
           onChangeText={(text) => this.setState({title:text})}
@@ -46,8 +54,7 @@ class NoteScreen extends Component {
           this.props.navigation.navigate('HomeScreen')}} >
           <Text>Edit</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{this.props.addNote({title,content})
-          this.props.navigation.navigate('HomeScreen')}} >
+        <TouchableOpacity onPress={()=>{}} >
           <Text>add</Text>
         </TouchableOpacity>
       </View>
