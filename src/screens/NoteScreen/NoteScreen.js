@@ -3,17 +3,11 @@ import {TouchableOpacity, StyleSheet, Text, View, TextInput} from 'react-native'
 import {connect} from 'react-redux';
 
 import {addNote, editNote, deleteNote} from '@actions';
-import DeleteButton from '@components/DeleteButton';
 import NoteScreenHeader from './NoteScreenHeader';
 
 class NoteScreen extends Component {
-  static navigationOptions = {
-    headerRight: <DeleteButton />
-  };
-
   constructor(props) {
     super(props);
-
     this.state = {
       key:this.props.navigation.getParam('key'),
       title: this.props.navigation.getParam('title'),
