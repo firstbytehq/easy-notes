@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {TouchableOpacity, StyleSheet, Text, View, TextInput} from 'react-native';
 import {connect} from 'react-redux';
 
-import {editNote,addNote,deleteNote} from '../actions';
+import {editNote,addNote,deleteNote} from '@actions';
 import DeleteButton from '@components/DeleteButton';
 
 class NoteScreen extends Component {
