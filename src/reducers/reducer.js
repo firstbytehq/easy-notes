@@ -11,7 +11,7 @@ const initialState = { notes: [], currentNote: {} }
 
 export default (state = initialState, action) => {
   console.log(action);
-  
+
   const { type, payload } = action;
 
   switch(type) {
@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
       if (title || content) {
         // Add a note only if either title or content is present.
         const key = shortid.generate();
-        const notes = [...state.notes, { title, content, key }]
+        const notes = [{ title, content, key }, ...state.notes]
         return {...state, notes};
       }
       return { ...state }
@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
       const { title, content, key } = payload;
       let notes;
       notes = state.notes.filter(note => note.key !== key);
-      notes = [...notes, { title, content, key }];
+      notes = [{ title, content, key }, ...notes];
       return {...state, notes};
     }
 
