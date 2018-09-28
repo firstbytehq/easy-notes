@@ -1,4 +1,4 @@
-package com.noteapp;
+package com.firstbytedigital.minimalnotes;
 
 import android.app.Application;
 
