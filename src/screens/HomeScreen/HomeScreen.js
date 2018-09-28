@@ -21,15 +21,16 @@ class HomeScreen extends Component {
   }
   render(){
     return(
-      <View style = {styles.container}>
-        <Text style = { styles.notes }>Notes</Text>
+      <View style = { styles.container }>
+        <View style = { styles.headerContainer }>
+          <Text style = { styles.headerTitle }>Notes</Text>
+        </View>
         <FlatList
           data = {this.props.notes}
           renderItem = {this.renderNote}
         />
-        <Divider style = {{marginTop:230}}/>
         <TouchableOpacity onPress = {() => {this.props.navigation.navigate('NoteScreen')}}>
-        <Text style = { styles.addNote }>Add Notes</Text>
+        <Text style = { styles.addNote }>Add new note...</Text>
       </TouchableOpacity>
       </View>
     )
@@ -39,29 +40,25 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(245, 245, 245)',
   },
-  notes:{
-    fontSize:28,
-    color:'black',
-    marginTop:25,
-    marginLeft:20,
-    marginBottom:30
+  headerContainer: {
+    height: 70,
+    paddingLeft: 20,
+    justifyContent: 'center'
   },
-  title:{
-    fontSize:20,
-    color:'black',
-    margin:15,
-
-  },
-  content:{
-    fontSize:18,
-    marginLeft:15
+  headerTitle: {
+    fontSize: 20,
+    color: 'black',
   },
   addNote:{
-    margin:20,
-    fontSize:18
+    padding: 20,
+    color: 'grey',
+    backgroundColor: 'white',
+    shadowColor: 'grey',
+    shadowOffset: { width: 0, height: -2 },
+    shadowRadius: 5,
+    shadowOpacity: 0.4,
   },
 });
 function mapStateToProps(state) {

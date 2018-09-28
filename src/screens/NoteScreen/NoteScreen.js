@@ -37,7 +37,7 @@ class NoteScreen extends Component {
   render() {
     const {title,content,id} = this.state;
     return (
-      <View style = {{flex:1,backgroundColor:'white'}} >
+      <View style = { styles.container } >
         <NoteScreenHeader
           onBackButtonPress = { this.onBackButtonPress }
           onDeleteButtonPress = { this.onDeleteButtonPress }
@@ -54,7 +54,7 @@ class NoteScreen extends Component {
           multiline = {true}
           onChangeText={(text) => this.setState({content:text})}
           value={this.state.content}
-          placeholder= 'content'
+          placeholder= 'Content'
         >
         </TextInput>
       </View>
@@ -63,13 +63,17 @@ class NoteScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'rgb(245, 245, 245)',
+    paddingHorizontal: 20,
+  },
   title:{
     fontSize:25,
-    marginLeft:15
+    marginBottom: '2%'
   },
   content:{
     fontSize:20,
-    marginLeft:15
   },
 });
 

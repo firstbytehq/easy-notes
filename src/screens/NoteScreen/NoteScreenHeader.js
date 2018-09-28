@@ -18,8 +18,8 @@ export default NoteScreenHeader = props => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    paddingTop: 35,
+    paddingBottom: 20,
+    paddingTop: 25,
     flexDirection: 'row',
     justifyContent: 'space-between'
   }
